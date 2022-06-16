@@ -1,0 +1,18 @@
+global:
+  scrape_interval: 15s # By default, scrape targets every 15 seconds.
+
+scrape_configs:
+  - job_name: prometheus-livro-api
+    scrape_interval: 15s
+    scrape_timeout: 10s
+    metrics_path: /metrics
+    scheme: http
+    static_configs:
+      - targets:
+          - prometheus-livro-api:9090
+
+  - job_name: app-livro-api
+    metrics_path: /actuator/prometheus
+    static_configs:
+      - targets:
+          - app-livro-api:8081

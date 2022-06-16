@@ -1,0 +1,67 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: app-livro-api
+  datasource:
+    driver-class-name: io.opentracing.contrib.jdbc.TracingDriver
+    username: root
+    password: root
+    testWhileIdle: true
+    url: jdbc:tracing:mysql://mysql-livro-api:3306/livroservice
+    validationQuery: SELECT 1
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+      max_allowed_packet: 2000
+    show-sql: true
+
+# Info application
+info:
+  app:
+    name: "@project.name@"
+    description: "@project.description@"
+    version: "@project.version@"
+    encoding: "@project.build.sourceEncoding@"
+    java.version: "@java.version@"
+
+
+# Jeager
+opentracing:
+  jaeger:
+    sampler-type: const
+    sampler-param: 1
+    service-name: app-livro-api
+    udp-sender:
+      host: jaeger
+      port: 6831
+
+# actuator
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - info
+          - health
+          - metrics
+          - prometheus
+
+  # prometheus
+  metrics:
+    enable:
+      jvw: true
+    export:
+      prometheus:
+        enabled: true
+    distribution:
+      sla:
+        http:
+          server:
+            requests: 50ms,100ms,200ms,300ms,500ms,1s
+    tags:
+      application: app-livro-api

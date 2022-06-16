@@ -1,0 +1,1045 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "id": 1,
+  "iteration": 1655324917451,
+  "links": [],
+  "panels": [
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 8,
+        "x": 0,
+        "y": 0
+      },
+      "id": 4,
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "text": {}
+      },
+      "pluginVersion": "7.4.1",
+      "targets": [
+        {
+          "expr": "http_server_requests_seconds_count{application=\"app-livro-api\",exception=\"None\",method=\"GET\",uri=\"/v1/api/autores\",}",
+          "interval": "",
+          "legendFormat": "{{method}}/{{outcome}}/{{status}}",
+          "refId": "GET/v1/api/autores"
+        },
+        {
+          "expr": "http_server_requests_seconds_count{application=\"app-livro-api\",exception=\"None\",method=\"POST\",uri=\"/v1/api/autores\",}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{method}}/{{outcome}}/{{status}}",
+          "refId": "POST/v1/api/autores"
+        },
+        {
+          "expr": "http_server_requests_seconds_count{application=\"app-livro-api\",exception=\"None\",method=\"GET\",uri=\"/v1/api/autores/{id}\",}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{method}}/{{outcome}}/{{status}}",
+          "refId": "GET/v1/api/autores/id_autores"
+        },
+        {
+          "expr": "http_server_requests_seconds_count{application=\"app-livro-api\",exception=\"None\",method=\"PUT\",uri=\"/v1/api/autores/{id}\",}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{method}}/{{outcome}}/{{status}}",
+          "refId": "PUT/v1/api/autores/id_autores"
+        },
+        {
+          "expr": "http_server_requests_seconds_count{application=\"app-livro-api\",exception=\"None\",method=\"DELETE\",uri=\"/v1/api/autores/{id}\",}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{method}}/{{outcome}}/{{status}}",
+          "refId": "DELETE/v1/api/autores/id_autores"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Autores Count",
+      "type": "gauge"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "dark-blue",
+                "value": null
+              },
+              {
+                "color": "#EAB839",
+                "value": 20
+              },
+              {
+                "color": "dark-red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 9,
+        "x": 8,
+        "y": 0
+      },
+      "id": 2,
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "text": {}
+      },
+      "pluginVersion": "7.4.1",
+      "targets": [
+        {
+          "expr": "http_server_requests_seconds_count{application=\"app-livro-api\", method=\"POST\", uri=\"/v1/api/categorias\"}",
+          "interval": "",
+          "legendFormat": "{{method}}/{{outcome}}/{{status}}",
+          "refId": "POST/v1/api/categorias"
+        },
+        {
+          "expr": "http_server_requests_seconds_count{application=\"app-livro-api\",method=\"GET\", uri=\"/v1/api/categorias/{id}\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{method}}/{{outcome}}/{{status}}",
+          "refId": "GET/v1/api/categorias/id_categoria"
+        },
+        {
+          "expr": "http_server_requests_seconds_count{application=\"app-livro-api\",method=\"GET\" ,uri=\"/v1/api/categorias\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{method}}/{{outcome}}/{{status}}",
+          "refId": "GET/v1/api/categorias"
+        },
+        {
+          "expr": "http_server_requests_seconds_count{application=\"app-livro-api\",method=\"PUT\",uri=\"/v1/api/categorias/{id}\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{method}}/{{outcome}}/{{status}}",
+          "refId": "PUT/v1/api/categorias"
+        },
+        {
+          "expr": "http_server_requests_seconds_count{application=\"app-livro-api\",method=\"DELETE\",uri=\"/v1/api/categorias/{id}\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{method}}/{{outcome}}/{{status}}",
+          "refId": "DELETE/v1/api/categorias"
+        }
+      ],
+      "title": "Categoria Count",
+      "type": "gauge"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "percentage",
+            "steps": [
+              {
+                "color": "semi-dark-yellow",
+                "value": null
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 7,
+        "x": 17,
+        "y": 0
+      },
+      "id": 9,
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "text": {}
+      },
+      "pluginVersion": "7.4.1",
+      "targets": [
+        {
+          "expr": "http_server_requests_seconds_count{application=\"app-livro-api\",method=\"GET\",uri=\"/v1/api/livros\"}",
+          "interval": "",
+          "legendFormat": "{{method}}/{{outcome}}/{{status}}",
+          "refId": "GET/v1/api/livros"
+        },
+        {
+          "expr": "http_server_requests_seconds_count{application=\"app-livro-api\",method=\"POST\",uri=\"/v1/api/livros\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{method}}/{{outcome}}/{{status}}",
+          "refId": "POST/v1/api/livros"
+        },
+        {
+          "expr": "http_server_requests_seconds_count{application=\"app-livro-api\",method=\"GET\",uri=\"/v1/api/livros/{id}\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{method}}/{{outcome}}/{{status}}",
+          "refId": "GET/v1/api/livros/id_livros"
+        },
+        {
+          "expr": "http_server_requests_seconds_count{application=\"app-livro-api\",method=\"PUT\",uri=\"/v1/api/livros/{id}\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{method}}/{{outcome}}/{{status}}",
+          "refId": "PUT/v1/api/livros/id_livros"
+        },
+        {
+          "expr": "http_server_requests_seconds_count{application=\"app-livro-api\",method=\"DELETE\",uri=\"/v1/api/livros/{id}\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{method}}/{{outcome}}/{{status}}",
+          "refId": "DELETE/v1/api/livros/id_livros"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Livros Count",
+      "type": "gauge"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 0,
+        "y": 9
+      },
+      "id": 7,
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "text": {}
+      },
+      "pluginVersion": "7.4.1",
+      "targets": [
+        {
+          "expr": "http_server_requests_seconds_sum{application=\"app-livro-api\",method=\"POST\",uri=\"/v1/api/autores\",}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{method}}/{{outcome}}/{{status}}",
+          "refId": "POST/v1/api/autores"
+        },
+        {
+          "expr": "http_server_requests_seconds_sum{application=\"app-livro-api\",method=\"GET\",uri=\"/v1/api/autores\"}",
+          "interval": "",
+          "legendFormat": "{{method}}/{{outcome}}/{{status}}",
+          "refId": "GET/v1/api/autores"
+        },
+        {
+          "expr": "http_server_requests_seconds_sum{application=\"app-livro-api\",method=\"GET\",uri=\"/v1/api/autores/{id}\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{method}}/{{outcome}}/{{status}}",
+          "refId": "GET/v1/api/autores/id_autores"
+        },
+        {
+          "expr": "http_server_requests_seconds_sum{application=\"app-livro-api\",method=\"PUT\",uri=\"/v1/api/autores/{id}\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{method}}/{{outcome}}/{{status}}",
+          "refId": "PUT/v1/api/autores/id_autores"
+        },
+        {
+          "expr": "http_server_requests_seconds_sum{application=\"app-livro-api\",method=\"PUT\",uri=\"/v1/api/autores/{id}\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{method}}/{{outcome}}/{{status}}",
+          "refId": "DELETE/v1/api/autores/id_autores"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Autores Sum",
+      "type": "gauge"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "dark-blue",
+                "value": null
+              },
+              {
+                "color": "dark-orange",
+                "value": 5
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 9,
+        "x": 8,
+        "y": 9
+      },
+      "id": 8,
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "text": {}
+      },
+      "pluginVersion": "7.4.1",
+      "targets": [
+        {
+          "expr": "http_server_requests_seconds_sum{application=\"app-livro-api\", method=\"POST\", uri=\"/v1/api/categorias\"}",
+          "interval": "",
+          "legendFormat": "{{method}}/{{outcome}}/{{status}}",
+          "refId": "POST/v1/api/categorias"
+        },
+        {
+          "expr": "http_server_requests_seconds_sum{application=\"app-livro-api\",method=\"GET\", uri=\"/v1/api/categorias/{id}\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{method}}/{{outcome}}/{{status}}",
+          "refId": "GET/v1/api/categorias/id_categoria"
+        },
+        {
+          "expr": "http_server_requests_seconds_sum{application=\"app-livro-api\",method=\"GET\" ,uri=\"/v1/api/categorias\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{method}}/{{outcome}}/{{status}}",
+          "refId": "GET/v1/api/categorias"
+        },
+        {
+          "expr": "http_server_requests_seconds_sum{application=\"app-livro-api\",method=\"PUT\",uri=\"/v1/api/categorias/{id}\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{method}}/{{outcome}}/{{status}}",
+          "refId": "PUT/v1/api/categorias/id_categoria"
+        },
+        {
+          "expr": "http_server_requests_seconds_sum{application=\"app-livro-api\",method=\"DELETE\",uri=\"/v1/api/categorias/{id}\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{method}}/{{outcome}}/{{status}}",
+          "refId": "DELETE/v1/api/categorias"
+        }
+      ],
+      "title": "Categoria Sum",
+      "type": "gauge"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "percentage",
+            "steps": [
+              {
+                "color": "yellow",
+                "value": null
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 7,
+        "x": 17,
+        "y": 9
+      },
+      "id": 10,
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "text": {}
+      },
+      "pluginVersion": "7.4.1",
+      "targets": [
+        {
+          "expr": "http_server_requests_seconds_sum{application=\"app-livro-api\", method=\"POST\",uri=\"/v1/api/livros\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{method}}/{{outcome}}/{{status}}",
+          "refId": "POST/v1/api/livros"
+        },
+        {
+          "expr": "http_server_requests_seconds_sum{application=\"app-livro-api\", method=\"GET\",uri=\"/v1/api/livros\"}",
+          "interval": "",
+          "legendFormat": "{{method}}/{{outcome}}/{{status}}",
+          "refId": "GET/v1/api/livros"
+        },
+        {
+          "expr": "http_server_requests_seconds_sum{application=\"app-livro-api\", method=\"GET\",uri=\"/v1/api/livros/{id}\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{method}}/{{outcome}}/{{status}}",
+          "refId": "GET/v1/api/livros/id_livros"
+        },
+        {
+          "expr": "http_server_requests_seconds_sum{application=\"app-livro-api\", method=\"PUT\",uri=\"/v1/api/livros/{id}\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{method}}/{{outcome}}/{{status}}",
+          "refId": "PUT/v1/api/livros/id_livros"
+        },
+        {
+          "expr": "http_server_requests_seconds_sum{application=\"app-livro-api\", method=\"DELETE\",uri=\"/v1/api/livros/{id}\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{method}}/{{outcome}}/{{status}}",
+          "refId": "DELETE/v1/api/livros/id_livros"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Livros Sum",
+      "type": "gauge"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {},
+          "custom": {},
+          "thresholds": {
+            "mode": "absolute",
+            "steps": []
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 9,
+        "w": 8,
+        "x": 0,
+        "y": 17
+      },
+      "hiddenSeries": false,
+      "id": 6,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.4.1",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "http_server_requests_seconds_max{application=\"app-livro-api\",method=\"GET\",uri=\"/v1/api/autores\"}",
+          "interval": "",
+          "legendFormat": "{{method}}/{{outcome}}/{{status}}",
+          "refId": "GET/v1/api/autores"
+        },
+        {
+          "expr": "http_server_requests_seconds_max{application=\"app-livro-api\",method=\"POST\",uri=\"/v1/api/autores\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{method}}/{{outcome}}/{{status}}",
+          "refId": "POST/v1/api/autores"
+        },
+        {
+          "expr": "http_server_requests_seconds_count{application=\"app-livro-api\",method=\"GET\",uri=\"/v1/api/autores/{id}\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{method}}/{{outcome}}/{{status}}",
+          "refId": "GET/v1/api/autores/id_autores"
+        },
+        {
+          "expr": "http_server_requests_seconds_max{application=\"app-livro-api\",method=\"PUT\",uri=\"/v1/api/autores/{id}\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{method}}/{{outcome}}/{{status}}",
+          "refId": "PUT/v1/api/autores/id_autores"
+        },
+        {
+          "expr": "http_server_requests_seconds_max{application=\"app-livro-api\",method=\"DELETE\",uri=\"/v1/api/autores/{id}\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{method}}/{{outcome}}/{{status}}",
+          "refId": "DELETE/v1/api/autores/id_autores"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Autores Max",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {},
+          "custom": {},
+          "thresholds": {
+            "mode": "absolute",
+            "steps": []
+          }
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 9,
+        "w": 9,
+        "x": 8,
+        "y": 17
+      },
+      "hiddenSeries": false,
+      "id": 5,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.4.1",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "http_server_requests_seconds_max{application=\"app-livro-api\", method=\"POST\", uri=\"/v1/api/categorias\"}",
+          "interval": "",
+          "legendFormat": "{{method}}/{{outcome}}/{{status}}",
+          "refId": "POST/v1/api/categorias"
+        },
+        {
+          "expr": "http_server_requests_seconds_max{application=\"app-livro-api\",method=\"GET\", uri=\"/v1/api/categorias/{id}\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{method}}/{{outcome}}/{{status}}",
+          "refId": "GET/v1/api/categorias/id_categoria"
+        },
+        {
+          "expr": "http_server_requests_seconds_max{application=\"app-livro-api\",method=\"GET\" ,uri=\"/v1/api/categorias\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{method}}/{{outcome}}/{{status}}",
+          "refId": "GET/v1/api/categorias"
+        },
+        {
+          "expr": "http_server_requests_seconds_max{application=\"app-livro-api\",method=\"PUT\",uri=\"/v1/api/categorias/{id}\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{method}}/{{outcome}}/{{status}}",
+          "refId": "PUT/v1/api/categorias"
+        },
+        {
+          "expr": "http_server_requests_seconds_max{application=\"app-livro-api\",method=\"DELETE\",uri=\"/v1/api/categorias/{id}\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{method}}/{{outcome}}/{{status}}",
+          "refId": "DELETE/v1/api/categorias"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Categoria Max",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {},
+          "custom": {},
+          "thresholds": {
+            "mode": "absolute",
+            "steps": []
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 9,
+        "w": 7,
+        "x": 17,
+        "y": 17
+      },
+      "hiddenSeries": false,
+      "id": 11,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.4.1",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "http_server_requests_seconds_max{application=\"app-livro-api\", method=\"GET\",uri=\"/v1/api/livros\"}",
+          "interval": "",
+          "legendFormat": "{{method}}/{{outcome}}/{{status}}",
+          "refId": "GET/v1/api/livros"
+        },
+        {
+          "expr": "http_server_requests_seconds_max{application=\"app-livro-api\", method=\"POST\",uri=\"/v1/api/livros\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{method}}/{{outcome}}/{{status}}",
+          "refId": "POST/v1/api/livros"
+        },
+        {
+          "expr": "http_server_requests_seconds_count{application=\"app-livro-api\", uri=\"/v1/api/livros/{id}\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{method}}/{{outcome}}/{{status}}",
+          "refId": "GET/v1/api/livros/id_livros"
+        },
+        {
+          "expr": "http_server_requests_seconds_max{application=\"app-livro-api\", method=\"PUT\",uri=\"/v1/api/livros/{id}\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{method}}/{{outcome}}/{{status}}",
+          "refId": "PUT/v1/api/livros/id_livros"
+        },
+        {
+          "expr": "http_server_requests_seconds_max{application=\"app-livro-api\", method=\"DELETE\",uri=\"/v1/api/livros/{id}\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{method}}/{{outcome}}/{{status}}",
+          "refId": "DELETE/v1/api/livros/id_livros"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Livros Max",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    }
+  ],
+  "refresh": "5s",
+  "schemaVersion": 27,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "allValue": null,
+        "current": {
+          "selected": false,
+          "text": "app-livro-api",
+          "value": "app-livro-api"
+        },
+        "datasource": null,
+        "definition": "label_values(application)",
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": "application",
+        "multi": false,
+        "name": "application",
+        "options": [
+          {
+            "selected": true,
+            "text": "app-livro-api",
+            "value": "app-livro-api"
+          }
+        ],
+        "query": {
+          "query": "label_values(application)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 0,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": false,
+          "text": "app-livro-api:8081",
+          "value": "app-livro-api:8081"
+        },
+        "datasource": null,
+        "definition": "label_values(jvm_classes_loaded_classes{application=\"$application\"}, instance)",
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": "instance",
+        "multi": false,
+        "name": "instance",
+        "options": [
+          {
+            "selected": true,
+            "text": "app-livro-api:8081",
+            "value": "app-livro-api:8081"
+          }
+        ],
+        "query": {
+          "query": "label_values(jvm_classes_loaded_classes{application=\"$application\"}, instance)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 0,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": false,
+          "text": "HikariPool-1",
+          "value": "HikariPool-1"
+        },
+        "datasource": null,
+        "definition": "label_values(hikaricp_connections{instance=\"$instance\", application=\"$application\"}, pool)",
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": "pool",
+        "multi": false,
+        "name": "pool",
+        "options": [
+          {
+            "selected": true,
+            "text": "HikariPool-1",
+            "value": "HikariPool-1"
+          }
+        ],
+        "query": {
+          "query": "label_values(hikaricp_connections{instance=\"$instance\", application=\"$application\"}, pool)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 0,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      }
+    ]
+  },
+  "time": {
+    "from": "now-5m",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Livro",
+  "uid": "utf6u5u7k",
+  "version": 16
+}

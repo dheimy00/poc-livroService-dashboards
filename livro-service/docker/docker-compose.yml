@@ -1,0 +1,122 @@
+version: '3'
+
+networks:
+  database:
+    internal: true
+  cache:
+    internal: true
+  api:
+    internal: true
+  monit:
+  proxy:
+
+services:
+
+  mysql-livro-api:
+    image: mysql:8.0
+    container_name: mysql-livro-api
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_PASSWORD: root
+      MYSQL_DATABASE: livroservice
+    volumes:
+      - ../mysql:/docker-entrypoint-initdb.d
+    ports:
+      - 3306:3306
+    networks:
+      - database
+
+  app-livro-api:
+    build:
+      context: ../app/
+      dockerfile: Dockerfile
+    container_name: app-livro-api
+    restart: unless-stopped
+    ports:
+      - 8081:8081
+    networks:
+      - api
+      - database
+      - cache
+    depends_on:
+      - mysql-livro-api
+      - jaeger-livro-api
+
+  proxy-livro-api:
+    image: nginx
+    container_name: proxy-livro-api
+    restart: unless-stopped
+    volumes:
+      - ../nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ../nginx/proxy.conf:/etc/nginx/conf.d/proxy.conf
+    ports:
+      - 80:80
+    networks:
+      - proxy
+      - api
+    depends_on:
+      - app-livro-api
+
+  jaeger-livro-api:
+    image: jaegertracing/all-in-one:1.33
+    container_name: jaeger-livro-api
+    restart: unless-stopped
+    ports:
+      - 5775:5775/udp
+      - 6831:6831/udp
+      - 6832:6832/udp
+      - 5778:5778
+      - 16686:16686
+      - 14250:14250
+      - 14268:14268
+      - 14269:14269
+      - 9411:9411
+    networks:
+      - api
+      - database
+      - proxy
+
+  prometheus-livro-api:
+    image: prom/prometheus:v2.24.1
+    container_name: prometheus-livro-api
+    restart: unless-stopped
+    ports:
+      - 9090:9090
+    volumes:
+      - ../prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ../prometheus/prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--web.enable-lifecycle'
+    networks:
+      - monit
+      - api
+    depends_on:
+      - proxy-livro-api
+
+  grafana-livro-api:
+    image: grafana/grafana:7.4.1
+    container_name: grafana-livro-api
+    restart: unless-stopped
+    ports:
+      - 3000:3000
+    networks:
+      - monit
+    depends_on:
+      - prometheus-livro-api
+
+  client-livro-api:
+    build:
+      context: ../client/
+      dockerfile: Dockerfile
+    image: client-livro-api
+    container_name: client-livro-api
+    restart: unless-stopped
+    networks:
+      - proxy
+    depends_on:
+      - grafana-livro-api
